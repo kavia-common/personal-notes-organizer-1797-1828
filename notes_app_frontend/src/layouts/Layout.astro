@@ -19,7 +19,10 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 
 <style>
 	:root {
-		/* Light theme variables */
+		/* Theme color palette */
+		--primary: #1976D2;
+		--secondary: #424242;
+		--accent: #FFC107;
 		--bg-color: #ffffff;
 		--text-color: #111827;
 		--text-secondary: #4b5563;
@@ -29,9 +32,8 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 		--shadow-color: rgba(0, 0, 0, 0.1);
 		--shadow-hover-color: rgba(0, 0, 0, 0.15);
 	}
-
 	body.dark-theme {
-		/* Dark theme variables */
+		/* Dark theme variables (in case user toggles) */
 		--bg-color: #111827;
 		--text-color: #f9fafb;
 		--text-secondary: #d1d5db;

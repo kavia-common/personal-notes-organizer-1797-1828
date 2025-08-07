@@ -1,11 +1,74 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import NotesMain from "../components/NotesMain.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { useState } from "react";
+
+// This page is the entry point for the Notes App UI
+// All CRUD interactions are handled in NotesMain, sidebar defines navigation.
 ---
-
 <Layout>
-	<Welcome />
+  <div class="app-container">
+    <header class="app-header">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#1976D2"/><path d="M14 19V39H34V29" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="19" y="10" width="16" height="13" rx="2" stroke="#fff" stroke-width="3" fill="#1976D2"/></svg>
+      <span class="app-title">Notes</span>
+    </header>
+    <div class="main-flex">
+      <Sidebar />
+      <NotesMain />
+    </div>
+  </div>
 </Layout>
+
+<style>
+.app-container {
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 2rem;
+  background: #1976D2;
+  color: white;
+  font-weight: 600;
+  font-size: 1.7rem;
+  min-height: 64px;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.06);
+  letter-spacing: 0.02em;
+}
+
+.app-header svg {
+  flex-shrink: 0;
+}
+
+.app-title {
+  font-size: 1.3rem;
+  color: #FFF;
+  letter-spacing: 0.04em;
+}
+
+.main-flex {
+  flex: 1 1 0%;
+  display: flex;
+  min-height: 0;
+  height: 1px;
+  background: var(--bg-color);
+}
+
+@media (max-width: 768px) {
+  .main-flex {
+    flex-direction: column;
+  }
+  .app-header {
+    padding: 0.9rem 1rem;
+    font-size: 1.15rem;
+  }
+}
+</style>
